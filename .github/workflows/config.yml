@@ -5,7 +5,7 @@ jobs:
     runs-on: ${{matrix.os}}
     if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     strategy : 
-      os: [maxos-latest, ubuntu-latest]
+      os: [macos-latest, ubuntu-latest]
     steps : 
       - name : Checkout
         uses: actions/checkout@v3
@@ -13,4 +13,8 @@ jobs:
       - uses : actions/action-setup@v2
         with : 
           version : 7.23.0
-    
+
+      - name : Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+
