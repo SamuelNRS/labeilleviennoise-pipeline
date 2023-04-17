@@ -5,7 +5,8 @@ jobs:
     runs-on: ${{matrix.os}}
     if: "!contains(github.event.head_commit.message, '[skip-ci]')"
     strategy : 
-      os: [macos-latest, ubuntu-latest]
+      matrix :
+        os: [macos-latest, ubuntu-latest]
     steps : 
       - name : Checkout
         uses: actions/checkout@v3
